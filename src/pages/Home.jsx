@@ -2,7 +2,14 @@ import React from 'react';
 import './Home.css';
 import LoginIcon from '@mui/icons-material/Login';
 import {AppBar,Toolbar,Typography,Link,Button,Box,Grid,Paper,Card,CardContent} from '@mui/material';
+import EquipmentService from '../services/EquipmentService';
+import { useEffect } from 'react';
 function Home(){
+
+
+
+
+
     return (
 
         <div>

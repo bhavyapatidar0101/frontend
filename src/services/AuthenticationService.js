@@ -14,9 +14,9 @@ class AuthenticationService{
         }
     }
     
-    isUser(){
+    isMember(){
         let role = localStorage.getItem("role");
-        if (role=="USER"){
+        if (role=="MEMBER"){
             return true;
         }
         else{

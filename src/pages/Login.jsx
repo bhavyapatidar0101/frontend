@@ -9,7 +9,7 @@ function Login(){
 
     const [email,setEmail] = useState();
     const [password,setPassword] = useState();
-
+    const navigate = useNavigate();
     if (AuthenticationService.isLoggedIn()){
         console.log("Already logged In");
     }
@@ -23,6 +23,18 @@ function Login(){
 
         let response = await AuthenticationService.login(DATA);
         console.log(response);
+        if(AuthenticationService.isAdmin()){
+            navigate("/admin-home");
+        }
+        else if(AuthenticationService.isTrainer()){
+            navigate("/trainer-home");
+        }
+        else if(AuthenticationService.isMember()){
+            navigate("/member-home");
+        }
+        else{
+            navigate("/logout");
+        }
 
 
 

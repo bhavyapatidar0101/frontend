@@ -25,7 +25,7 @@ function Join(){
             "email":email,
             "phone":phone,
             "password":password,
-            "role":"USER"
+            "role":"MEMBER"
         }
         console.log(DATA);
         let response = await AuthenticationService.register(DATA);

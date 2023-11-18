@@ -6,7 +6,6 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import Footer from './pages/Footer';
-import AdminLogin from './pages/AdminLogin';
 import Login from './pages/Login';
 import Contact from './pages/Contact';
 import Services from './pages/Services';
@@ -16,10 +15,20 @@ import TrainerHome from './pages/TrainerHome';
 import TrainerMyStudents from './pages/TrainerMyStudents';
 import TrainerMyCourses from './pages/TrainerMyCourses';
 import TrainerMyEquipments from './pages/TrainerMyEquipments';
+import MemberHome from './pages/MemberHome';
+import MemberCourses from './pages/MemberCourses';
+import MemberEquipments from './pages/MemberEquipments';
+import MemberTrainers from './pages/MemberTrainers';
+import PaymentPage from './pages/PaymentPage';
 function App() {
   return (
     <div>
       <Routes>
+        <Route exact path='/payment' element={<PaymentPage/>}/>
+        <Route exact path='/member-trainers' element={<MemberTrainers/>}/>
+        <Route exact path='/member-equipments' element={<MemberEquipments/>}/>
+        <Route exact path='/member-courses' element={<MemberCourses/>}/>
+        <Route exact path='/member-home' element={<MemberHome/>}/>
         <Route exact path='/trainer-my-equipments' element={<TrainerMyEquipments/>}/>
         <Route exact path='/trainer-my-courses' element={<TrainerMyCourses/>}/>
         <Route exact path='/trainer-my-students' element={<TrainerMyStudents/>}/>
@@ -29,7 +38,6 @@ function App() {
         <Route exact path='/services' element={<Services/>}/>
         <Route exact path='/contact' element={<Contact />}/>
         <Route exact path='/login' element={<Login />} />
-        <Route exact path='/admin-login' element={<AdminLogin />}/>
         <Route exact path="/" element={<Home />}/>
       
       </Routes>
