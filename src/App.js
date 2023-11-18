@@ -19,12 +19,12 @@ import MemberHome from './pages/MemberHome';
 import MemberCourses from './pages/MemberCourses';
 import MemberEquipments from './pages/MemberEquipments';
 import MemberTrainers from './pages/MemberTrainers';
-import PaymentPage from './pages/PaymentPage';
+import MemberPurchase from './pages/MemberPurchase';
 function App() {
   return (
     <div>
       <Routes>
-        <Route exact path='/payment' element={<PaymentPage/>}/>
+        <Route exact path='/member-purchase/:course_id' element={<MemberPurchase/>}/>
         <Route exact path='/member-trainers' element={<MemberTrainers/>}/>
         <Route exact path='/member-equipments' element={<MemberEquipments/>}/>
         <Route exact path='/member-courses' element={<MemberCourses/>}/>

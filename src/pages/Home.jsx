@@ -32,13 +32,13 @@ function Home(){
                 <div className="display-1 py-1" style={{letterSpacing:"5px"}}>FITNESS AWAITS</div>
                 <h4 className='mt-3'>What are you waiting for?</h4>
                 <div className="home-middle-content-buttons d-flex flex-row my-5 justify-content-between">
-                    <Button href='/join' variant='outlined mx-3 border border-white'>Join Us</Button>
-                    <Button href='#home-cards' variant='outlined mx-3 border border-white'>Know More</Button>
+                    <Button href='/join' variant='outlined' className='text-white mx-3 border border-white'>Join Us</Button>
+                    <Button href='#home-cards' variant='outlined' className='text-white mx-3 border border-white'>Know More</Button>
                 </div>
 
             </div>
 
-    <div className='mt-3 py-4' id='home-cards' style={{height:"100vh"}}>
+    <div className='mt-1 py-3' id='home-cards' style={{height:"100vh"}}>
       <Typography variant="h4" className='text-center display-3 mt-5'>
         Know us
       </Typography>
