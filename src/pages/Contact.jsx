@@ -15,11 +15,11 @@ function Contact() {
                 <Toolbar className='bg-dark py-3 align-middle d-flex flex-row justify-content-between align-items-center'>
                     <Box className="d-flex flex-row align-items-center">
                     <Typography variant='body' className='text-light h3 mx-3' sx={{letterSpacing:3}}>SPORTSCLUB</Typography>
-                    <a href="#" className='text-white ms-5 me-3 text-decoration-none' underline='none'>Home</a>
-                    <a href="#" className='text-white mx-3 text-decoration-none' underline='none'>Services</a>
-                    <a href="#" className='text-primary mx-3 text-decoration-none' underline='none'>Contact</a>
+                    <a href="/" className='text-white ms-5 me-3 text-decoration-none' underline='none'>Home</a>
+                    <a href="/services" className='text-white mx-3 text-decoration-none' underline='none'>Services</a>
+                    <a href="/contact" className='text-primary mx-3 text-decoration-none' underline='none'>Contact</a>
                     </Box>
-                    <Button size='small' href="#" className="text-white border border-white" underline='none'>Sign in<LoginIcon /></Button>
+                    <Button size='small' href="/login" className="text-white border border-white" underline='none'>Sign in<LoginIcon /></Button>
                 </Toolbar>
     <div className=' py-5 mt-5 text-center'>
       <h3 className='display-3 text-light'>

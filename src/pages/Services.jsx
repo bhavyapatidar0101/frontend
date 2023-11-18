@@ -1,41 +1,32 @@
 import React from 'react';
-import './Home.css';
+import { Card, CardContent, Typography, Button, Grid } from '@mui/material';
+import EmailIcon from '@mui/icons-material/Email';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import PhoneIcon from '@mui/icons-material/Phone';
+
+import { Box,Toolbar,TextField,Container,Input} from '@mui/material';
 import LoginIcon from '@mui/icons-material/Login';
-import {AppBar,Toolbar,Typography,Link,Button,Box,Grid,Paper,Card,CardContent} from '@mui/material';
-function Home(){
-    return (
 
-        <div>
-            <div className="home-background-video"></div>
-
-            
+function Services() {
+  return (
+    
+    <div>
+        <div className="home-background-video"></div>
                 <Toolbar className='bg-dark py-3 align-middle d-flex flex-row justify-content-between align-items-center'>
                     <Box className="d-flex flex-row align-items-center">
                     <Typography variant='body' className='text-light h3 mx-3' sx={{letterSpacing:3}}>SPORTSCLUB</Typography>
                     <a href="/" className='text-white ms-5 me-3 text-decoration-none' underline='none'>Home</a>
-                    <a href="/services" className='text-white mx-3 text-decoration-none' underline='none'>Services</a>
-                    <a href="/contact" className='text-white mx-3 text-decoration-none' underline='none'>Contact</a>
+                    <a href="/services" className='text-primary mx-3 text-decoration-none' underline='none'>Services</a>
+                    <a href="/contact" className='text-light mx-3 text-decoration-none' underline='none'>Contact</a>
                     </Box>
                     <Button size='small' href="/login" className="text-white border border-white" underline='none'>Sign in<LoginIcon /></Button>
                 </Toolbar>
-         
-
-            <div className="home-middle-content text-white d-flex flex-column justify-content-center align-items-center" style={{height:"100vh"}}>
-
-                <div className="display-1 py-1" style={{letterSpacing:"5px"}}>FITNESS AWAITS</div>
-                <h4 className='mt-3'>What are you waiting for?</h4>
-                <div className="home-middle-content-buttons d-flex flex-row my-5 justify-content-between">
-                    <Button href='/join' variant='outlined mx-3 border border-white'>Join Us</Button>
-                    <Button href='#home-cards' variant='outlined mx-3 border border-white'>Know More</Button>
-                </div>
-
-            </div>
-
-    <div className='mt-3 py-4' id='home-cards' style={{height:"100vh"}}>
-      <Typography variant="h4" className='text-center display-3 mt-5'>
-        Know us
+   
+                <div className='' id='home-cards' style={{height:"70%"}}>
+      <Typography variant="h4" className='text-center display-3 mt-5 text-light'>
+        Services
       </Typography>
-      <Grid container spacing={7} className='mt-1 py-3'>
+      <Grid container spacing={7} className=' py-3'>
         {/* First Row */}
         <Grid item xs={4}>
         <Card className='mx-3 py-5 bg-dark text-light box-shadow'>
@@ -123,10 +114,10 @@ function Home(){
         </Grid>
       </Grid>
     </div>
-            
 
-        </div>
-    );
-}
 
-export default Home;
+    </div>
+  );
+};
+
+export default Services;

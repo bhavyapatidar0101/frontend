@@ -9,13 +9,27 @@ import Footer from './pages/Footer';
 import AdminLogin from './pages/AdminLogin';
 import Login from './pages/Login';
 import Contact from './pages/Contact';
+import Services from './pages/Services';
+import Join from './pages/Join';
+import Logout from './pages/Logout';
+import TrainerHome from './pages/TrainerHome';
+import TrainerMyStudents from './pages/TrainerMyStudents';
+import TrainerMyCourses from './pages/TrainerMyCourses';
+import TrainerMyEquipments from './pages/TrainerMyEquipments';
 function App() {
   return (
     <div>
       <Routes>
+        <Route exact path='/trainer-my-equipments' element={<TrainerMyEquipments/>}/>
+        <Route exact path='/trainer-my-courses' element={<TrainerMyCourses/>}/>
+        <Route exact path='/trainer-my-students' element={<TrainerMyStudents/>}/>
+        <Route exact path='/trainer-home' element={<TrainerHome/>}/>
+        <Route exact path='/logout' element={<Logout/>}/>
+        <Route exact path='/join' element={<Join/>}/>
+        <Route exact path='/services' element={<Services/>}/>
         <Route exact path='/contact' element={<Contact />}/>
         <Route exact path='/login' element={<Login />} />
-        <Route exact path='/admin-login' element={<AdminLogin />} />
+        <Route exact path='/admin-login' element={<AdminLogin />}/>
         <Route exact path="/" element={<Home />}/>
       
       </Routes>
