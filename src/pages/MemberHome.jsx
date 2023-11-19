@@ -57,7 +57,7 @@ function MemberHome(){
                     
                     </Box>
                     <span className='text-light'><FaceIcon/> Welcome {member?member.first_name:"Member"}!</span>
-                    <Button size='small' href="/login" className="text-white" underline='none'><LogoutIcon /></Button>
+                    <Button size='small' href="/logout" className="text-white" underline='none'><LogoutIcon /></Button>
             </Toolbar>
 
             <span className="d-inline-block py-3 text-light display-4 mx-5 my-2 border-bottom border-light">

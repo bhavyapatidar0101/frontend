@@ -11,7 +11,10 @@ import CardMedia from '@mui/material/CardMedia';
 import cardimage from './images/trainer-student.jpg';
 import StripeCheckout from 'react-stripe-checkout';
 import PaymentService from '../services/PaymentService';
+import FaceIcon from '@mui/icons-material/Face';
+
 function MemberPurchase(){
+    const [member,setMember] = useState();
     let navigate = useNavigate();
     let {course_id} = useParams();
     const [course,setCourse] = useState({});
@@ -30,6 +33,14 @@ function MemberPurchase(){
 
     }
     useEffect(()=>{
+        if(!AuthenticationService.isLoggedIn() || !AuthenticationService.isMember()){
+            navigate("/");
+        }
+        UserService.details().then((response)=>{
+            let resp = response;
+            console.log(resp)
+            setMember(resp);
+        });
 
         CourseService.getNotByMember().then((response)=>{
             response.forEach(element => {
@@ -56,6 +67,8 @@ function MemberPurchase(){
                     <a href="/member-trainers" className='text-white mx-3 text-decoration-none' underline='none'>Trainers</a>
                     
                     </Box>
+                    <span className='text-light'><FaceIcon/> Welcome {member?member.first_name:"Member"}!</span>
+
                     <Button size='small' href="/login" className="text-white" underline='none'><LogoutIcon /></Button>
                  </Toolbar>
 

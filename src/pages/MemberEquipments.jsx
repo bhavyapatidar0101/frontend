@@ -56,7 +56,7 @@ function MemberEquipments(){
                     </Box>
                     <span className='text-light'><FaceIcon/> Welcome {member?member.first_name:"Member"}!</span>
 
-                    <Button size='small' href="/login" className="text-white" underline='none'><LogoutIcon /></Button>
+                    <Button size='small' href="/logout" className="text-white" underline='none'><LogoutIcon /></Button>
                  </Toolbar>
                  
 

@@ -21,7 +21,7 @@ function TrainerMyCourses(){
         }
         else{
             UserService.details().then(response=>{
-                setTrainer(response.first_name);
+                setTrainer(response);
             });
 
             CourseService.getByTrainer().then(response=>{
@@ -35,7 +35,7 @@ function TrainerMyCourses(){
 
 
     return(
-            <div>
+            <div className='bg-dark text-light'>
                 <Toolbar className='bg-dark py-3 align-middle d-flex flex-row justify-content-between align-items-center'>
                     <Box className="d-flex flex-row align-items-center">
                     <Typography variant='body' className='text-light h3 mx-3' sx={{letterSpacing:3}}>SPORTSCLUB</Typography>
@@ -45,11 +45,11 @@ function TrainerMyCourses(){
                     <a href="/trainer-my-equipments" className='text-white mx-3 text-decoration-none' underline='none'>My Equipments</a>
                     
                     </Box>
-                    <span className='text-light'>Hey {trainer}</span>
-                    <Button size='small' href="/logout" className="text-white border border-white" underline='none'><LogoutIcon /></Button>
+                    <span className='text-light'>Welcome {trainer.first_name}!</span>
+                    <Button size='small' href="/logout" className="text-white" underline='none'><LogoutIcon /></Button>
                 </Toolbar>
 
-                <span className="d-inline-block py-3 text-dark display-4 mx-5 mt-5 border-bottom border-dark">
+                <span className="d-inline-block py-3 display-4 mx-5 mt-5 border-bottom border-light">
                     My Courses
                 </span>
 
@@ -63,16 +63,16 @@ function TrainerMyCourses(){
 
 
 
-                <div className="my-students mt-5 my-5 d-flex flex-row align-items-center justify-content-around flex-wrap" width="100%">
+                <div className="my-students my-5 py-5 d-flex flex-row align-items-center justify-content-start flex-wrap" width="100%" height="100%">
                 
                 {course.map((c)=>
-                <Card sx={{ width: "15%" }}>
+                <Card className='mx-5' sx={{ width: "15%" }}>
                     <CardMedia component="img" height="140" image={cardimage} alt="Course Image" />
                     <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">{c.name}</Typography>
-                    <Typography variant="body2" color="text.secondary">{c.description}</Typography>
-                    <Typography variant="body2" color="text.secondary">Duration: {c.duration}</Typography>
-                    <Typography variant="body2" color="text.secondary">Price: {c.price}Rs</Typography>
+                    <Typography className='text-uppercase font-weight-bold' gutterBottom variant="h5" component="div">{c.name}</Typography>
+                    <Typography className='my-1' variant="body2" color="text.secondary">{c.description}</Typography>
+                    <Typography className='my-1' variant="body2" color="text.secondary">Duration: {c.duration}</Typography>
+                    <Typography className='my-1' variant="body2" color="text.secondary">Price: {c.price}Rs</Typography>
                     </CardContent>
                     <CardActions>
                     <Button size="small">More Info</Button>

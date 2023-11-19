@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Box,Typography,Toolbar,Button,TextField,Container,Input} from '@mui/material';
 import LoginIcon from '@mui/icons-material/Login';
 import AuthenticationService from '../services/AuthenticationService';
@@ -10,9 +10,7 @@ function Login(){
     const [email,setEmail] = useState();
     const [password,setPassword] = useState();
     const navigate = useNavigate();
-    if (AuthenticationService.isLoggedIn()){
-        console.log("Already logged In");
-    }
+    
     
     async function login(){
 
@@ -40,7 +38,26 @@ function Login(){
 
     }
 
+    useEffect(()=>{
+        if (AuthenticationService.isLoggedIn()){
+            console.log("Already logged In");
+            if(AuthenticationService.isMember()){
+                navigate("/member-home");
+            }
+            else if(AuthenticationService.isTrainer()){
+                navigate("/trainer-home");
+            }
+            else if(AuthenticationService.isAdmin()){
+                navigate("/admin-home");
+            }
+        }
+        else{
+            AuthenticationService.logout();
+            
+        }
 
+
+    });
 
 
 
@@ -59,7 +76,6 @@ function Login(){
                     <a href="/services" className='text-white mx-3 text-decoration-none' underline='none'>Services</a>
                     <a href="/contact" className='text-white mx-3 text-decoration-none' underline='none'>Contact</a>
                     </Box>
-                    <Button size='small' href="/login" className="text-white border border-white" underline='none'>Sign in<LoginIcon /></Button>
                 </Toolbar>
            
 

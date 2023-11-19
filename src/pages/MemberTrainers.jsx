@@ -55,7 +55,7 @@ function MemberTrainers(){
                     </Box>
                     <span className='text-light'><FaceIcon/> Welcome {member?member.first_name:"Member"}!</span>
 
-                    <Button size='small' href="/login" className="text-white" underline='none'><LogoutIcon /></Button>
+                    <Button size='small' href="/logout" className="text-white" underline='none'><LogoutIcon /></Button>
                  </Toolbar>
                  
                
@@ -71,8 +71,8 @@ function MemberTrainers(){
                     <CardMedia component="img" height="140" image={cardimage} alt="Course Image" />
                     <CardContent>
                     <Typography gutterBottom variant="h5" component="div">{c.first_name + " " + c.last_name}</Typography>
-                    <Typography variant="body2"><MailOutlineIcon/> {c.email}</Typography>
-                    <Typography variant="body2"><PhoneIcon/> {c.phone}</Typography>
+                    <Typography variant="body2"><MailOutlineIcon/><br/> {c.email}</Typography>
+                    <Typography variant="body2"><PhoneIcon/><br/>{c.phone}</Typography>
                     </CardContent>
                     <CardActions>
                     </CardActions>
