@@ -4,19 +4,40 @@ import LoginIcon from '@mui/icons-material/Login';
 import {AppBar,Toolbar,Typography,Link,Button,Box,Grid,Paper,Card,CardContent,TextField,Container,FormControl,Radio,FormControlLabel,FormLabel,RadioGroup} from '@mui/material';
 import AuthenticationService from '../services/AuthenticationService';
 import { useState } from 'react';
-
+import ValidationService from '../services/ValidationService';
 
 function Join(){
 
-    const [firstname,setFirstname] = useState();
-    const [lastname,setLastname] = useState();
-    const [email,setEmail] = useState();
-    const [phone,setPhone] = useState();
-    const [password,setPassword] = useState();
-    const [role,setRole] = useState();
-
+    const [firstname,setFirstname] = useState("");
+    const [lastname,setLastname] = useState("");
+    const [email,setEmail] = useState("");
+    const [phone,setPhone] = useState("");
+    const [password,setPassword] = useState("");
+    const [role,setRole] = useState("");
+    const [error,setError] = useState("");
 
     async function register(){
+        setError("");
+        if(!(firstname.length>1)){
+            setError("First name should not be empty");
+            return;
+        }
+        if(!(lastname.length>2)){
+            setError("Last name should not be empty");
+            return;
+        }
+        if(!ValidationService.validateEmail(email)){
+            setError("Invalid email")
+            return;
+        }
+        if(!ValidationService.validatePassword(password)){
+            setError("Password should contain more than 8 letter");
+            return;
+        }
+        if(ValidationService.validatePhone(phone)){
+            setError("Invalid phone number");
+            return;
+        }
        
         //Validation to be done
         const DATA = {
@@ -28,8 +49,15 @@ function Join(){
             "role":"MEMBER"
         }
         console.log(DATA);
-        let response = await AuthenticationService.register(DATA);
-        alert(response.data);
+        AuthenticationService.register(DATA).then((resp)=>{
+            if(resp === true){
+                setError(<span className='text-success'>User has been registered.</span>);
+            }
+            else{
+                setError(<span>User has not been registered.</span>);
+            }
+        });
+        
         
     }
 
@@ -53,12 +81,12 @@ function Join(){
                 <Container maxWidth="sm" className='d-flex flex-column justify-content-around py-2 border border-dark rounded' style={{marginTop:"1%",backgroundColor:"rgba(0,0,0,0.5)"}}>
                         
                         <h3 className='display-5 text-light my-3'>Register</h3>
-                        <TextField onChange={(e)=>{setFirstname(e.target.value)}} className='my-1 text-light border-light' size='small' variant='filled' required label="First Name" type='text' name='first_name' sx={{input:{color:'white'},label:{color:'white'}}}></TextField>
-                        <TextField onChange={(e)=>{setLastname(e.target.value)}} className='my-1 text-light border-light' size='small' variant='filled' required label="Last Name" type='text' name='last_name' sx={{input:{color:'white'},label:{color:'white'}}}></TextField>
-                        <TextField onChange={(e)=>{setEmail(e.target.value)}} className='my-1 text-light border-light' size='small' variant='filled' required label="Email" type='text' name='email' sx={{input:{color:'white'},label:{color:'white'}}}></TextField>
-                        <TextField onChange={(e)=>{setPhone(e.target.value)}} className='my-1 text-light border-light' size='small' variant='filled' required label="Phone" type='text' name='phone' sx={{input:{color:'white'},label:{color:'white'}}}></TextField>
-                        <TextField onChange={(e)=>{setPassword(e.target.value)}} className='my-1 text-light' size='small' variant='filled' required label="Password" type='password' name='password' sx={{input:{color:'white'},label:{color:'white'}}}></TextField>
-                        
+                        <TextField onChange={(e)=>{setFirstname(e.target.value)}} className='my-3 text-light border-light' size='small' variant='filled' required label="First Name" type='text' name='first_name' sx={{input:{color:'white'},label:{color:'white'}}}></TextField>
+                        <TextField onChange={(e)=>{setLastname(e.target.value)}} className='my-3 text-light border-light' size='small' variant='filled' required label="Last Name" type='text' name='last_name' sx={{input:{color:'white'},label:{color:'white'}}}></TextField>
+                        <TextField onChange={(e)=>{setEmail(e.target.value)}} className='my-3 text-light border-light' size='small' variant='filled' required label="Email" type='text' name='email' sx={{input:{color:'white'},label:{color:'white'}}}></TextField>
+                        <TextField onChange={(e)=>{setPhone(e.target.value)}} className='my-3 text-light border-light' size='small' variant='filled' required label="Phone" type='text' name='phone' sx={{input:{color:'white'},label:{color:'white'}}}></TextField>
+                        <TextField onChange={(e)=>{setPassword(e.target.value)}} className='my-3 text-light' size='small' variant='filled' required label="Password" type='password' name='password' sx={{input:{color:'white'},label:{color:'white'}}}></TextField>
+                        <span className='text-danger'>{error}</span>
                         <Button onClick={register} className='my-3 text-light' variant='standard'>Register</Button>
                     </Container>
 

@@ -20,10 +20,16 @@ import MemberCourses from './pages/MemberCourses';
 import MemberEquipments from './pages/MemberEquipments';
 import MemberTrainers from './pages/MemberTrainers';
 import MemberPurchase from './pages/MemberPurchase';
+import AdminHome from './pages/AdminHome';
+import AdminUsers from './pages/AdminUsers';
+import AdminCourses from './pages/AdminCourses';
 function App() {
   return (
     <div>
       <Routes>
+        <Route exact path='/admin-courses' element={<AdminCourses/>}/>
+        <Route exact path='/admin-users' element={<AdminUsers/>}/>
+        <Route exact path='/admin-home' element={<AdminHome/>}/>
         <Route exact path='/member-purchase/:course_id' element={<MemberPurchase/>}/>
         <Route exact path='/member-trainers' element={<MemberTrainers/>}/>
         <Route exact path='/member-equipments' element={<MemberEquipments/>}/>

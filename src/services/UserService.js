@@ -53,6 +53,22 @@ class UserService{
             return false;
         })
     }
+    update(data){
+        const TOKEN = "Bearer " + localStorage.getItem("token");
+        const URL = API + "update";
+        const HEADER = {'headers': {'Content-Type': 'application/json','Authorization': TOKEN}};
+        return axios.put(URL,data,HEADER).then((response)=>{
+            console.log(response);
+            if (response.status == 200){
+                return response.data;
+            }
+            else{
+                return false;
+            }
+        }).catch((error)=>{
+            return false;
+        })
+    }
 
     delete(id){
         const TOKEN = "Bearer " + localStorage.getItem("token");

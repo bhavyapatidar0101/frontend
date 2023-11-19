@@ -2,6 +2,23 @@ import axios from 'axios';
 const API = "http://localhost:8080/course/"
 
 class CourseService{
+    update(data){
+        const TOKEN = "Bearer " + localStorage.getItem("token");
+        const URL = API + "update";
+        const HEADER = {'headers': {'Content-Type': 'application/json','Authorization': TOKEN}};
+        return axios.put(URL,data,HEADER).then((response)=>{
+            console.log(response);
+            if (response.status == 200){
+                return response.data;
+            }
+            else{
+                return false;
+            }
+        }).catch((error)=>{
+            return false;
+        })
+    }
+
 
     getAll(){
         const TOKEN = "Bearer " + localStorage.getItem("token");
@@ -50,6 +67,7 @@ class CourseService{
                 return false;
             }
         }).catch((error)=>{
+            console.log(error);
             return false;
         })
     }

@@ -4,16 +4,23 @@ import LoginIcon from '@mui/icons-material/Login';
 import AuthenticationService from '../services/AuthenticationService';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-
+import ValidationService from '../services/ValidationService';
 function Login(){
 
-    const [email,setEmail] = useState();
-    const [password,setPassword] = useState();
+    const [email,setEmail] = useState("");
+    const [password,setPassword] = useState("");
     const navigate = useNavigate();
-    
+    const [error,setError] = useState("");
     
     async function login(){
-
+        if(!ValidationService.validateEmail(email)){
+            setError("Invalid Email");
+            return;
+        }
+        if(!(password.length>1)){
+            setError("Password should not be empty");
+            return;
+        }
         const DATA = {
             "email" : email,
             "password": password
@@ -86,6 +93,7 @@ function Login(){
                         <h3 className='display-5 text-light my-3'>Login</h3>
                         <TextField onChange={(e)=>{setEmail(e.target.value)}} className='my-3 text-light border-light' size='small' variant='filled' required label="email" type='email' name='email' sx={{input:{color:'white'},label:{color:'white'}}}></TextField>
                         <TextField onChange={(e)=>{setPassword(e.target.value)}} className='my-3 text-light' size='small' variant='filled' required label="password" type='password' name='password' sx={{input:{color:'white'},label:{color:'white'}}}></TextField>
+                        <span className='text-danger'>{error}</span>
                         <Button onClick={login} className='my-3 text-light' variant='standard'>Sign In</Button>
                     </Container>
             </div>
