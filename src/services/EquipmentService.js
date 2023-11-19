@@ -84,6 +84,32 @@ class EquipmentService{
             return [];
         })
     }
+     getByMember(){
+        const TOKEN = "Bearer " + localStorage.getItem("token");
+        const URL = API + "bymember";
+        const HEADER = {'headers': {'Authorization': TOKEN}};
+        return axios.get(URL,HEADER).then((response)=>{
+            console.log(response);
+            return response.data;
+            
+        }).catch((error)=>{
+            console.log(error);
+            return [];
+        })
+    }
+    getNotByMember(){
+        const TOKEN = "Bearer " + localStorage.getItem("token");
+        const URL = API + "notbymember";
+        const HEADER = {'headers': {'Authorization': TOKEN}};
+        return axios.get(URL,HEADER).then((response)=>{
+            console.log(response);
+            return response.data;
+            
+        }).catch((error)=>{
+            console.log(error);
+            return [];
+        })
+    }
 
 
 

@@ -87,6 +87,39 @@ class UserService{
             return [];
         })
     }
+    getByMember(){
+        const TOKEN = "Bearer " + localStorage.getItem("token");
+        const URL = API + "bymember";
+        const HEADER = {'headers': {'Authorization': TOKEN}};
+        return axios.get(URL,HEADER).then((response)=>{
+            console.log(response);
+            if (response.status == 200){
+                return response.data;
+            }
+            else{
+                return [];
+            }
+        }).catch((error)=>{
+            return [];
+        })
+    }
+    getNotByMember(){
+        const TOKEN = "Bearer " + localStorage.getItem("token");
+        const URL = API + "notbymember";
+        const HEADER = {'headers': {'Authorization': TOKEN}};
+        return axios.get(URL,HEADER).then((response)=>{
+            console.log(response);
+            if (response.status == 200){
+                return response.data;
+            }
+            else{
+                return [];
+            }
+        }).catch((error)=>{
+            console.log(error);
+            return [];
+        })
+    }
 
 
 

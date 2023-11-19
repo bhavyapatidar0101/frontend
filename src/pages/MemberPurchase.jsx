@@ -24,7 +24,7 @@ function MemberPurchase(){
         console.log(DATA);
         PaymentService.add(DATA).then((response)=>{
                 console.log(response);
-                
+                navigate("/member-courses")
         });
 
 
@@ -45,7 +45,7 @@ function MemberPurchase(){
     },[]);
 
 
-    return(<div>
+    return(<div className='bg-dark text-light'>
                 <Toolbar className='bg-dark py-3 align-middle d-flex flex-row justify-content-between align-items-center'>
                     <Box className="d-flex flex-row align-items-center">
                     <Typography variant='body' className='text-light h3 mx-3' sx={{letterSpacing:3}}>SPORTSCLUB</Typography>
@@ -59,7 +59,7 @@ function MemberPurchase(){
                     <Button size='small' href="/login" className="text-white" underline='none'><LogoutIcon /></Button>
                  </Toolbar>
 
-                 <span className="d-inline-block py-3 text-dark display-4 mx-5 mt-5 border-bottom border-dark">
+                 <span className="d-inline-block py-3 display-4 mx-5 mt-5 border-bottom border-light">
                     Buy Course
                 </span>
 

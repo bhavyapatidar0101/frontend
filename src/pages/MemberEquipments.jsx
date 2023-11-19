@@ -9,12 +9,15 @@ import CourseService from '../services/CourseService';
 import CardActions from '@mui/material/CardActions';
 import CardMedia from '@mui/material/CardMedia';
 import cardimage from './images/trainer-student.jpg';
-
+import EquipmentService from '../services/EquipmentService';
+import FaceIcon from '@mui/icons-material/Face';
 
 
 function MemberEquipments(){
     let navigate = useNavigate();
     const [member,setMember] = useState();
+    const [memberEquipments,setMemberEquipments] = useState([]);
+    const [notMemberEquipments,setNotMemberEquipments] = useState([]);
     useEffect(()=>{
         if(!AuthenticationService.isLoggedIn() || !AuthenticationService.isMember()){
             navigate("/");
@@ -25,9 +28,20 @@ function MemberEquipments(){
             setMember(resp);
         });
 
+        EquipmentService.getByMember().then((response)=>{
+            let resp = response;
+            console.log(response);
+            setMemberEquipments(resp);
+        });
+        EquipmentService.getNotByMember().then((response)=>{
+            let resp = response;
+            console.log(response);
+            setNotMemberEquipments(resp);
+        });
+
 
     },[]);
-    return (<div>
+    return (<div className='bg-dark text-light'>
 
 
                 <Toolbar className='bg-dark py-3 align-middle d-flex flex-row justify-content-between align-items-center'>
@@ -40,12 +54,62 @@ function MemberEquipments(){
                     <a href="/member-trainers" className='text-white mx-3 text-decoration-none' underline='none'>Trainers</a>
                     
                     </Box>
+                    <span className='text-light'><FaceIcon/> Welcome {member?member.first_name:"Member"}!</span>
+
                     <Button size='small' href="/login" className="text-white" underline='none'><LogoutIcon /></Button>
                  </Toolbar>
-                 <div>
-                 <span className="d-inline-block py-3 text-dark display-4 mx-5 mt-5 border-bottom border-dark">
-                    Welcome {member?member.first_name:"Member"}!
-                </span></div>
+                 
+
+                <span className="d-inline-block py-3  display-4 mx-5 mt-5 border-bottom border-light">
+                    My Equipments
+                </span>
+
+                <div className="my-students py-5 mt-5 my-5 d-flex flex-row align-items-center justify-content-start flex-wrap" width="100%">
+                
+                {memberEquipments.map((c)=>
+                <Card className='mx-5 text-dark' sx={{ width: "15%" }}>
+                    <CardMedia component="img" height="140" image={cardimage} alt="Course Image" />
+                    <CardContent>
+                    <Typography className='text-uppercase' gutterBottom variant="h5" component="div">{c.name}</Typography>
+                    <Typography className='my-1' variant="body2">{c.description}Rs</Typography>
+                    <Typography className='my-1' variant="body2">BRAND : {c.brand}</Typography>
+                    <Typography className='my-1' variant="body2">STATUS : {c.status}</Typography>
+                    
+                    </CardContent>
+                    <CardActions>
+                    </CardActions>
+                </Card>
+                )}
+                </div>
+
+
+
+
+
+
+
+
+                <span className="d-inline-block py-3 display-4 mx-5 mt-5 border-bottom border-light">
+                    Explore
+                </span>
+
+
+                <div className="my-students py-5 mt-5 my-5 d-flex flex-row align-items-center justify-content-start flex-wrap" width="100%">
+                
+                {notMemberEquipments.map((c)=>
+                <Card className="mx-5" sx={{ width: "15%" }}>
+                    <CardMedia component="img" height="140" image={cardimage} alt="Course Image" />
+                    <CardContent>
+                    <Typography className='text-uppercase' gutterBottom variant="h5" component="div">{c.name}</Typography>
+                    <Typography className='my-1' variant="body2">{c.description}Rs</Typography>
+                    <Typography className='my-1' variant="body2">BRAND : {c.brand}</Typography>
+                    <Typography className='my-1' variant="body2">STATUS : {c.status}</Typography>
+                    </CardContent>
+                    <CardActions>
+                    </CardActions>
+                </Card>
+                )}
+                </div>
 
 
 

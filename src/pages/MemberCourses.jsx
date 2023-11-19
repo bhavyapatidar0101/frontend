@@ -9,6 +9,8 @@ import CourseService from '../services/CourseService';
 import CardActions from '@mui/material/CardActions';
 import CardMedia from '@mui/material/CardMedia';
 import cardimage from './images/trainer-student.jpg';
+import FaceIcon from '@mui/icons-material/Face';
+
 function MemberCourses(){
 
     let navigate = useNavigate();
@@ -37,7 +39,7 @@ function MemberCourses(){
     
 
         return (
-            <div>
+            <div className='bg-dark text-light'>
                 <Toolbar className='bg-dark py-3 align-middle d-flex flex-row justify-content-between align-items-center'>
                     <Box className="d-flex flex-row align-items-center">
                     <Typography variant='body' className='text-light h3 mx-3' sx={{letterSpacing:3}}>SPORTSCLUB</Typography>
@@ -48,26 +50,24 @@ function MemberCourses(){
                     <a href="/member-trainers" className='text-white mx-3 text-decoration-none' underline='none'>Trainers</a>
                     
                     </Box>
+                    <span className='text-light'><FaceIcon/> Welcome {member?member.first_name:"Member"}!</span>
                     <Button size='small' href="/login" className="text-white" underline='none'><LogoutIcon /></Button>
                  </Toolbar>
-                 <div>
-                 <span className="d-inline-block py-3 text-dark display-4 mx-5 mt-5 border-bottom border-dark">
-                    Welcome {member?member.first_name:"Member"}!
-                </span></div>
-                 <span className="d-inline-block py-3 text-dark display-4 mx-5 mt-5 border-bottom border-dark">
+              
+                 <span className="d-inline-block py-3  display-4 mx-5 mt-5 border-bottom border-light">
                     My Courses
                 </span>
 
-                <div className="my-students mx-5 py-5 mt-5 my-5 d-flex flex-row align-items-center justify-content-start flex-wrap" width="100%">
+                <div className="my-students py-5 mt-5 my-5 d-flex flex-row align-items-center justify-content-start flex-wrap" width="100%">
                 
                 {purchasedCourses.map((c)=>
-                <Card className='me-5' sx={{ width: "15%" }}>
+                <Card className='mx-5 text-dark' sx={{ width: "15%" }}>
                     <CardMedia component="img" height="140" image={cardimage} alt="Course Image" />
                     <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">{c.name}</Typography>
-                    <Typography variant="body2">{c.description}</Typography>
-                    <Typography variant="body2">Duration: {c.duration}</Typography>
-                    <Typography variant="body2">Price: {c.price}Rs</Typography>
+                    <Typography className='text-uppercase font-weight-bold' gutterBottom variant="h5" component="div">{c.name}</Typography>
+                    <Typography className='my-1' variant="body2">{c.description}</Typography>
+                    <Typography className='my-1' variant="body2">Duration: {c.duration}</Typography>
+                    <Typography className="my-1" variant="body2">Price: {c.price}Rs</Typography>
                     </CardContent>
                     <CardActions>
                     <Typography className='px-1 text-success'>PURCHASED</Typography>
@@ -83,24 +83,24 @@ function MemberCourses(){
 
 
 
-                <span className="d-inline-block py-3 text-dark display-4 mx-5 mt-5 border-bottom border-dark">
+                <span className="d-inline-block py-3 display-4 mx-5 mt-5 border-bottom border-light">
                     Explore
                 </span>
 
 
-                <div className="my-students mx-5 py-5 mt-5 my-5 d-flex flex-row align-items-center justify-content-start flex-wrap" width="100%">
+                <div className="my-students py-5 mt-5 my-5 d-flex flex-row align-items-center justify-content-start flex-wrap" width="100%">
                 
                 {notPurchasedCourses.map((c)=>
-                <Card className="me-5" sx={{ width: "15%" }}>
+                <Card className="mx-5" sx={{ width: "15%" }}>
                     <CardMedia component="img" height="140" image={cardimage} alt="Course Image" />
                     <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">{c.name}</Typography>
-                    <Typography variant="body2" color="text.secondary">{c.description}</Typography>
-                    <Typography variant="body2" color="text.secondary">Duration: {c.duration}</Typography>
-                    <Typography variant="body2" color="text.secondary">Price: {c.price}Rs</Typography>
+                    <Typography className='my-1 text-uppercase font-weight-bold' gutterBottom variant="h5" component="div">{c.name}</Typography>
+                    <Typography className='my-1' variant="body2" color="text.secondary">{c.description}</Typography>
+                    <Typography className='my-1' variant="body2" color="text.secondary">Duration: {c.duration}</Typography>
+                    <Typography className='my-1' variant="body2" color="text.secondary">Price: {c.price}Rs</Typography>
                     </CardContent>
                     <CardActions>
-                    <Button href={'/member-purchase/'+c.id} size="small">Purchase</Button>
+                    <Button href={'/member-purchase/'+c.id} size="medium">Purchase</Button>
                     </CardActions>
                 </Card>
                 )}
