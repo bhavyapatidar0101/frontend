@@ -45,7 +45,7 @@ function Home(){
       <Grid container spacing={7} className='mt-1 py-3'>
         {/* First Row */}
         <Grid item xs={4}>
-        <Card className='mx-3 py-5 bg-dark text-light box-shadow'>
+        <Card className='mx-3 py-5 box-shadow'>
             <CardContent>
               <Typography variant="h5" component="div">
               Opportunity
@@ -59,7 +59,7 @@ function Home(){
           </Card>
         </Grid>
         <Grid item xs={4}>
-        <Card className='mx-3 py-5 bg-dark text-light'>
+        <Card className='mx-3 py-5'>
             <CardContent>
               <Typography variant="h5" component="div">
                 Teamwork
@@ -72,7 +72,7 @@ function Home(){
           </Card>
         </Grid>
         <Grid item xs={4}>
-        <Card className='mx-3 py-5 bg-dark text-light'>
+        <Card className='mx-3 py-5'>
             <CardContent>
               <Typography variant="h5" component="div">
               Courses
@@ -88,7 +88,7 @@ function Home(){
 
         {/* Second Row */}
         <Grid item xs={4}>
-        <Card className='mx-3 py-5 bg-dark text-light'>
+        <Card className='mx-3 py-5'>
             <CardContent>
               <Typography variant="h5" component="div">
               Trainers
@@ -102,7 +102,7 @@ function Home(){
           </Card>
         </Grid>
         <Grid item xs={4}>
-        <Card className='mx-3 py-5 bg-dark text-light'>
+        <Card className='mx-3 py-5'>
             <CardContent>
               <Typography variant="h5" component="div">
               Discipline
@@ -116,7 +116,7 @@ function Home(){
           </Card>
         </Grid>
         <Grid item xs={4}>
-        <Card className='mx-3 py-5 bg-dark text-light'>
+        <Card className='mx-3 py-5'>
             <CardContent>
               <Typography variant="h5" component="div">
               Events

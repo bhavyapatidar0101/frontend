@@ -24,15 +24,15 @@ function MemberCourses(){
         UserService.details().then((response)=>{
             let resp = response;
             console.log(resp)
-            setMember(resp);
+            setMember(resp.data);
         });
 
-        CourseService.getByMember().then((response)=>{
-            setPurchasedCourses(response);
-        });
-        CourseService.getNotByMember().then((response)=>{
-            setNotPurchasedCourses(response);
-        });
+        CourseService.purchased().then((response)=>{
+            setPurchasedCourses(response.data);
+        }).catch(e=>console.log(e));
+        CourseService.notpurchased().then((response)=>{
+            setNotPurchasedCourses(response.data);
+        }).catch(e=>console.log(e));
 
     },[]);
 
@@ -45,7 +45,7 @@ function MemberCourses(){
                     <Typography variant='body' className='text-light h3 mx-3' sx={{letterSpacing:3}}>SPORTSCLUB</Typography>
                     <a href="/member-home" className='text-white mx-3 text-decoration-none' underline='none'>Home</a>
 
-                    <a href="/member-courses" className='text-primary mx-3 text-decoration-none' underline='none'>Courses</a>
+                    <a href="/member-courses" className='text-info mx-3 text-decoration-none' underline='none'>Courses</a>
                     <a href="/member-equipments" className='text-white mx-3 text-decoration-none' underline='none'>Equipments</a>
                     <a href="/member-trainers" className='text-white mx-3 text-decoration-none' underline='none'>Trainers</a>
                     

@@ -28,15 +28,15 @@ function Contact() {
       <Grid container spacing={3} className='justify-content-around mt-3'>
         {/* Email Card */}
         <Grid item xs={12} sm={6} md={3}>
-          <Card className='py-5 px-3'>
+          <Card className='py-5 px-3 bg-dark text-light'>
             <CardContent>
               <EmailIcon fontSize="large" />
               <Typography variant="h6">Email</Typography>
-              <Typography variant="body2" color="text.secondary">
+              <Typography className="text-light" variant="body2" color="text.secondary">
                 Send us an email for inquiries and support.
               </Typography>
             </CardContent>
-            <Button variant="outlined" color="primary">
+            <Button variant="standard" color="primary">
               Send Email
             </Button>
           </Card>
@@ -44,15 +44,15 @@ function Contact() {
 
         {/* Social Media Card */}
         <Grid item xs={12} sm={6} md={3}>
-          <Card className='py-5 px-3'>
+          <Card className='py-5 px-3 bg-dark text-light'>
             <CardContent>
               <FacebookIcon fontSize="large" />
               <Typography variant="h6">Social Media</Typography>
-              <Typography variant="body2" color="text.secondary">
+              <Typography className="text-light"variant="body2" color="text.secondary">
                 Connect with us on social media platforms.
               </Typography>
             </CardContent>
-            <Button variant="outlined" color="primary">
+            <Button variant="standard" color="primary">
               Follow Us
             </Button>
           </Card>
@@ -60,15 +60,15 @@ function Contact() {
 
         {/* Phone Card */}
         <Grid item xs={12} sm={6} md={3}>
-          <Card className='py-5 px-3'>
+          <Card className='py-5 px-3 bg-dark text-light'>
             <CardContent>
               <PhoneIcon fontSize="large" />
               <Typography variant="h6">Phone</Typography>
-              <Typography variant="body2" color="text.secondary">
+              <Typography className="text-light" variant="body2" color="text.secondary">
                 Call us for immediate assistance and inquiries.
               </Typography>
             </CardContent>
-            <Button variant="outlined" color="primary">
+            <Button variant="standard" color="primary">
               Call Us
             </Button>
           </Card>

@@ -21,11 +21,11 @@ function TrainerMyCourses(){
         }
         else{
             UserService.details().then(response=>{
-                setTrainer(response);
+                setTrainer(response.data);
             });
 
-            CourseService.getByTrainer().then(response=>{
-                setCourse(response);
+            CourseService.assigned().then(response=>{
+                setCourse(response.data);
             });
         }
 
@@ -40,7 +40,7 @@ function TrainerMyCourses(){
                     <Box className="d-flex flex-row align-items-center">
                     <Typography variant='body' className='text-light h3 mx-3' sx={{letterSpacing:3}}>SPORTSCLUB</Typography>
                     <a href="/trainer-home" className='text-light mx-3 text-decoration-none' underline='none'>Home</a>
-                    <a href="/trainer-my-courses" className='text-primary mx-3 text-decoration-none' underline='none'>My Courses</a>
+                    <a href="/trainer-my-courses" className='text-info mx-3 text-decoration-none' underline='none'>My Courses</a>
                     <a href="/trainer-my-students" className='text-light mx-3 text-decoration-none' underline='none'>My Students</a>
                     <a href="/trainer-my-equipments" className='text-white mx-3 text-decoration-none' underline='none'>My Equipments</a>
                     

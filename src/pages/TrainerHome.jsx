@@ -7,10 +7,21 @@ import AuthenticationService from '../services/AuthenticationService';
 import UserService from '../services/UserService';
 import FaceIcon from '@mui/icons-material/Face';
 import cardimage from './images/trainer-student.jpg';
+import CourseService from '../services/CourseService';
+import EquipmentService from '../services/EquipmentService';
 
+import SupervisedUserCircleIcon from '@mui/icons-material/SupervisedUserCircle';
+import SportsGymnasticsIcon from '@mui/icons-material/SportsGymnastics';
+import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
+import SportsCricketIcon from '@mui/icons-material/SportsCricket';
+import ManIcon from '@mui/icons-material/Man';
+import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
 function TrainerHome(){
     let navigate = useNavigate();
     let [trainer,setTrainer] = useState();
+    let [mystudents,setMystudents]= useState(0);
+    let [myequipments,setMyequipments] = useState(0);
+    let [mycourses,setMycourses] = useState(0);
     useEffect(()=>{ 
         //authenticated check
         if(!AuthenticationService.isLoggedIn() || !AuthenticationService.isTrainer()){
@@ -18,23 +29,36 @@ function TrainerHome(){
         }
         else{
             UserService.details().then((response)=>{
-                setTrainer(response);
+                setTrainer(response.data);
             });
         }
 
-    });
+        UserService.undertrainer().then(resp=>{
+          setMystudents(resp.data.length);
+        }).catch(e=>console.log(e));
+
+
+        CourseService.assigned().then((resp)=>{
+          setMycourses(resp.data.length);
+        }).catch(e=>console.log(e));
+
+
+        EquipmentService.assigned().then(resp=>{
+          setMyequipments(resp.data.length);
+        }).catch(e=>console.log(e));
+
+    },[]);
 
 
 
 
     return(
             <div>
-                            <div className="home-background-video"></div>
 
                 <Toolbar className='bg-dark py-3 align-middle d-flex flex-row justify-content-between align-items-center'>
                     <Box className="d-flex flex-row align-items-center">
                     <Typography variant='body' className='text-light h3 mx-3' sx={{letterSpacing:3}}>SPORTSCLUB</Typography>
-                    <a href="/trainer-home" className='text-white mx-3 text-decoration-none' underline='none'>Home</a>
+                    <a href="/trainer-home" className='text-info mx-3 text-decoration-none' underline='none'>Home</a>
 
                     <a href="/trainer-my-courses" className='text-white mx-3 text-decoration-none' underline='none'>My Courses</a>
                     <a href="/trainer-my-students" className='text-white mx-3 text-decoration-none' underline='none'>My Students</a>
@@ -46,33 +70,47 @@ function TrainerHome(){
                     <Button size='small' href="/logout" className="text-white" underline='none'><LogoutIcon /></Button>
                 </Toolbar>
 
-                <span className="d-inline-block py-3 text-light display-4 mx-5 my-2 border-bottom border-light">
-                    Welcome {trainer?trainer.first_name:"Trainer"}!
-                </span>
-<div className="content text-light mx-5 mt-2 my-5 py-5 px-3 bg-dark" style={{"backgroundColor":"rgba(0,0,0,0.4)"}}>
+               
+                <Grid container spacing={3} className='justify-content-around text-center mt-5 py-5'>
+        {/* Email Card */}
+        <Grid item xs={12} sm={6} md={3}>
+          <Card className='py-3 px-3 bg-dark text-light'>
+            <CardContent>
+              <SupervisedUserCircleIcon fontSize='large' className='my-3'></SupervisedUserCircleIcon>
+              <Typography variant="h6">STUDENTS</Typography>
+              <h6>{mystudents}</h6>
+            </CardContent>
+            <h6>
 
+            </h6>
+          </Card>
+        </Grid>
 
-  <section>
-    <h2 className='text-light display-3 my-2 py-5'>Embrace the Thrill of Sports!</h2>
-
-  
-    <article>
-      <h3 className='text-light'>Dedicated Trainers:</h3>
-      <ul>
-        <li>Expert Guidance: As a trainer, your expertise shapes the future champions.</li>
-        <li>Celebrate Success Stories: Highlight the achievements of your trainees.</li>
-        <li>Connect with Members: Facilitate communication with your trainees.</li>
-      </ul>
-    </article>
-  
- 
-  </section>
-
-  <footer className='my-4'>
-    <p>Join Us in the Pursuit of Excellence! Ready to dive in? Explore the site, connect with the community, and let the games begin!</p>
-  </footer>
-  </div>
-
+        <Grid item xs={12} sm={6} md={3}>
+          <Card className='py-3 px-3 bg-dark text-light'>
+            <CardContent>
+              <SportsGymnasticsIcon className='my-3' fontSize="large" />
+              <Typography variant="h6">COURSES</Typography>
+            <h6>{mycourses}</h6>
+            </CardContent>
+            <h6>
+             
+            </h6>
+          </Card>
+        </Grid> <Grid item xs={12} sm={6} md={3}>
+          <Card className='py-3 px-3 bg-dark text-light'>
+            <CardContent>
+              <ManIcon className='my-3' fontSize="large" />
+              <Typography variant="h6">EQUIPMENTS</Typography>
+              {myequipments}
+            </CardContent>
+            <h6>
+                
+            </h6>
+          </Card>
+        </Grid>
+      </Grid>
+      
 
 
 

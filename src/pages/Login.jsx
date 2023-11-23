@@ -12,6 +12,31 @@ function Login(){
     const navigate = useNavigate();
     const [error,setError] = useState("");
     
+
+    function checkEmail(e){
+        setEmail(e);
+        if(!ValidationService.validateEmail(email)){
+            setError("Invalid Email");
+        }
+        else{
+            setError("");
+        }
+
+    }
+
+    function checkPassword(p){
+        setPassword(p);
+        if(!(password.length>1)){
+            setError("Password should not be empty");
+            
+        }
+        else{
+            setError("");
+        }
+    }
+
+
+
     async function login(){
         if(!ValidationService.validateEmail(email)){
             setError("Invalid Email");
@@ -91,8 +116,8 @@ function Login(){
                     <Container maxWidth="sm" className='d-flex flex-column justify-content-around py-5 border border-dark rounded' style={{marginTop:"5%",backgroundColor:"rgba(0,0,0,0.5)"}}>
                         
                         <h3 className='display-5 text-light my-3'>Login</h3>
-                        <TextField onChange={(e)=>{setEmail(e.target.value)}} className='my-3 text-light border-light' size='small' variant='filled' required label="email" type='email' name='email' sx={{input:{color:'white'},label:{color:'white'}}}></TextField>
-                        <TextField onChange={(e)=>{setPassword(e.target.value)}} className='my-3 text-light' size='small' variant='filled' required label="password" type='password' name='password' sx={{input:{color:'white'},label:{color:'white'}}}></TextField>
+                        <TextField onChange={(e)=>{checkEmail(e.target.value)}} className='my-3 text-light border-light' size='small' variant='filled' required label="email" type='email' name='email' sx={{input:{color:'white'},label:{color:'white'}}}></TextField>
+                        <TextField onChange={(e)=>{checkPassword(e.target.value)}} className='my-3 text-light' size='small' variant='filled' required label="password" type='password' name='password' sx={{input:{color:'white'},label:{color:'white'}}}></TextField>
                         <span className='text-danger'>{error}</span>
                         <Button onClick={login} className='my-3 text-light' variant='standard'>Sign In</Button>
                     </Container>

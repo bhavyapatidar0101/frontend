@@ -7,134 +7,53 @@ class UserService{
         const TOKEN = "Bearer " + localStorage.getItem("token");
         const URL = API + "all";
         const HEADER = {'headers': {'Content-Type': 'application/json','Authorization': TOKEN}};
-        return axios.get(URL,HEADER).then((response)=>{
-            console.log(response);
-            if (response.status == 200){
-                return response.data;
-            }
-            else{
-                return [];
-            }
-        }).catch((error)=>{
-            return [];
-        })
+        return axios.get(URL,HEADER);
     }
 
     details(id){
         const TOKEN = "Bearer " + localStorage.getItem("token");
-        const URL = API + "details";
+        const URL = API + "detail";
         const HEADER = {'headers': {'Content-Type': 'application/json','Authorization': TOKEN}};
-        return axios.get(URL,HEADER).then((response)=>{
-            console.log(response);
-            if (response.status == 200){
-                return response.data;
-            }
-            else{
-                return false;
-            }
-        }).catch((error)=>{
-            return false;
-        })
+        return axios.get(URL,HEADER);
     }
 
     add(data){
         const TOKEN = "Bearer " + localStorage.getItem("token");
         const URL = API + "add";
         const HEADER = {'headers': {'Content-Type': 'application/json','Authorization': TOKEN}};
-        return axios.post(URL,data,HEADER).then((response)=>{
-            console.log(response);
-            if (response.status == 200){
-                return response.data;
-            }
-            else{
-                return false;
-            }
-        }).catch((error)=>{
-            return false;
-        })
+        return axios.post(URL,data,HEADER);
     }
     update(data){
         const TOKEN = "Bearer " + localStorage.getItem("token");
         const URL = API + "update";
         const HEADER = {'headers': {'Content-Type': 'application/json','Authorization': TOKEN}};
-        return axios.put(URL,data,HEADER).then((response)=>{
-            console.log(response);
-            if (response.status == 200){
-                return response.data;
-            }
-            else{
-                return false;
-            }
-        }).catch((error)=>{
-            return false;
-        })
+        return axios.put(URL,data,HEADER);
     }
 
     delete(id){
         const TOKEN = "Bearer " + localStorage.getItem("token");
         const URL = API + "delete/" + id;
         const HEADER = {'headers': {'Authorization': TOKEN}};
-        return axios.delete(URL,HEADER).then((response)=>{
-            console.log(response);
-            if (response.status == 200){
-                return response.data;
-            }
-            else{
-                return false;
-            }
-        }).catch((error)=>{
-            return false;
-        })
+        return axios.delete(URL,HEADER);
     }
 
-    getByTrainer(){
+    undertrainer(){
         const TOKEN = "Bearer " + localStorage.getItem("token");
-        const URL = API + "bytrainer";
+        const URL = API + "undertrainer";
         const HEADER = {'headers': {'Authorization': TOKEN}};
-        return axios.get(URL,HEADER).then((response)=>{
-            console.log(response);
-            if (response.status == 200){
-                return response.data;
-            }
-            else{
-                return [];
-            }
-        }).catch((error)=>{
-            return [];
-        })
+        return axios.get(URL,HEADER);
     }
-    getByMember(){
+    undermember(){
         const TOKEN = "Bearer " + localStorage.getItem("token");
-        const URL = API + "bymember";
+        const URL = API + "undermember";
         const HEADER = {'headers': {'Authorization': TOKEN}};
-        return axios.get(URL,HEADER).then((response)=>{
-            console.log(response);
-            if (response.status == 200){
-                return response.data;
-            }
-            else{
-                return [];
-            }
-        }).catch((error)=>{
-            return [];
-        })
+        return axios.get(URL,HEADER);
     }
-    getNotByMember(){
+    notundermember(){
         const TOKEN = "Bearer " + localStorage.getItem("token");
-        const URL = API + "notbymember";
+        const URL = API + "notundermember";
         const HEADER = {'headers': {'Authorization': TOKEN}};
-        return axios.get(URL,HEADER).then((response)=>{
-            console.log(response);
-            if (response.status == 200){
-                return response.data;
-            }
-            else{
-                return [];
-            }
-        }).catch((error)=>{
-            console.log(error);
-            return [];
-        })
+        return axios.get(URL,HEADER);
     }
     
 

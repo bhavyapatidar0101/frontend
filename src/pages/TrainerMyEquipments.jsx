@@ -23,11 +23,11 @@ function TrainerMyEquipments(){
         }
         else{
             UserService.details().then(response=>{
-                setTrainer(response);
+                setTrainer(response.data);
             });
 
-            EquipmentService.getByTrainer().then((r)=>{
-                setEq(r);
+            EquipmentService.assigned().then((r)=>{
+                setEq(r.data);
                 console.log(eq);
             });
         }
@@ -45,7 +45,7 @@ function TrainerMyEquipments(){
                     <a href="/trainer-home" className='text-white ms-5 me-3 text-decoration-none' underline='none'>Home</a>
                     <a href="/trainer-my-courses" className='text-white mx-3 text-decoration-none' underline='none'>My Courses</a>
                     <a href="/trainer-my-students" className='text-white mx-3 text-decoration-none' underline='none'>My Students</a>
-                    <a href="/trainer-my-equipments" className='text-primary mx-3 text-decoration-none' underline='none'>My Equipments</a>
+                    <a href="/trainer-my-equipments" className='text-info mx-3 text-decoration-none' underline='none'>My Equipments</a>
                     
                     </Box>
                     <span className='text-light'><FaceIcon/> Welcome {trainer?trainer.first_name:"Trainer"}!</span>

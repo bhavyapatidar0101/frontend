@@ -25,18 +25,18 @@ function MemberEquipments(){
         UserService.details().then((response)=>{
             let resp = response;
             console.log(resp)
-            setMember(resp);
+            setMember(resp.data);
         });
 
-        EquipmentService.getByMember().then((response)=>{
+        EquipmentService.purchased().then((response)=>{
             let resp = response;
             console.log(response);
-            setMemberEquipments(resp);
+            setMemberEquipments(resp.data);
         });
-        EquipmentService.getNotByMember().then((response)=>{
+        EquipmentService.notpurchased().then((response)=>{
             let resp = response;
             console.log(response);
-            setNotMemberEquipments(resp);
+            setNotMemberEquipments(resp.data);
         });
 
 
@@ -50,7 +50,7 @@ function MemberEquipments(){
                     <a href="/member-home" className='text-white mx-3 text-decoration-none' underline='none'>Home</a>
 
                     <a href="/member-courses" className='text-white mx-3 text-decoration-none' underline='none'>Courses</a>
-                    <a href="/member-equipments" className='text-primary mx-3 text-decoration-none' underline='none'>Equipments</a>
+                    <a href="/member-equipments" className='text-info mx-3 text-decoration-none' underline='none'>Equipments</a>
                     <a href="/member-trainers" className='text-white mx-3 text-decoration-none' underline='none'>Trainers</a>
                     
                     </Box>

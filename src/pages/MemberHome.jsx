@@ -20,7 +20,7 @@ function MemberHome(){
             UserService.details().then((response)=>{
                 let resp = response;
                 console.log(resp)
-                setMember(resp);
+                setMember(resp.data);
             });
 
 
@@ -44,7 +44,6 @@ function MemberHome(){
 
     return (
         <div>
-            <div className="home-background-video"></div>
        
             <Toolbar className='bg-dark py-3 align-middle d-flex flex-row justify-content-between align-items-center'>
                     <Box className="d-flex flex-row align-items-center">

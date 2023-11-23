@@ -7,17 +7,8 @@ class EquipmentService{
         const TOKEN = "Bearer " + localStorage.getItem("token");
         const URL = API + "all";
         const HEADER = {'headers': {'Content-Type': 'application/json','Authorization': TOKEN}};
-        return axios.get(URL,HEADER).then((response)=>{
-            console.log(response);
-            if (response.status == 200){
-                return response.data;
-            }
-            else{
-                return [];
-            }
-        }).catch((error)=>{
-            return [];
-        })
+        return axios.get(URL,HEADER);
+        
     }
 
     getById(id){
@@ -41,74 +32,39 @@ class EquipmentService{
         const TOKEN = "Bearer " + localStorage.getItem("token");
         const URL = API + "add";
         const HEADER = {'headers': {'Content-Type': 'application/json','Authorization': TOKEN}};
-        return axios.post(URL,data,HEADER).then((response)=>{
-            console.log(response);
-            if (response.status == 200){
-                return response.data;
-            }
-            else{
-                return false;
-            }
-        }).catch((error)=>{
-            return false;
-        })
+        return axios.post(URL,data,HEADER);
+    }
+    update(data){
+        const TOKEN = "Bearer " + localStorage.getItem("token");
+        const URL = API + "update";
+        const HEADER = {'headers': {'Content-Type': 'application/json','Authorization': TOKEN}};
+        return axios.put(URL,data,HEADER);
     }
 
     delete(id){
         const TOKEN = "Bearer " + localStorage.getItem("token");
         const URL = API + "delete/" + id;
         const HEADER = {'headers': {'Authorization': TOKEN}};
-        return axios.delete(URL,HEADER).then((response)=>{
-            console.log(response);
-            if (response.status == 200){
-                return response.data;
-            }
-            else{
-                return false;
-            }
-        }).catch((error)=>{
-            return false;
-        })
+        return axios.delete(URL,HEADER);
     }
 
-    async getByTrainer(){
+    assigned(){
         const TOKEN = "Bearer " + localStorage.getItem("token");
-        const URL = API + "bytrainer";
+        const URL = API + "assigned";
         const HEADER = {'headers': {'Authorization': TOKEN}};
-        return await axios.get(URL,HEADER).then((response)=>{
-            console.log(response);
-            return response.data;
-            
-        }).catch((error)=>{
-            console.log(error);
-            return [];
-        })
+        return axios.get(URL,HEADER);
     }
-     getByMember(){
+    purchased(){
         const TOKEN = "Bearer " + localStorage.getItem("token");
-        const URL = API + "bymember";
+        const URL = API + "purchased";
         const HEADER = {'headers': {'Authorization': TOKEN}};
-        return axios.get(URL,HEADER).then((response)=>{
-            console.log(response);
-            return response.data;
-            
-        }).catch((error)=>{
-            console.log(error);
-            return [];
-        })
+        return axios.get(URL,HEADER);
     }
-    getNotByMember(){
+    notpurchased(){
         const TOKEN = "Bearer " + localStorage.getItem("token");
-        const URL = API + "notbymember";
+        const URL = API + "notpurchased";
         const HEADER = {'headers': {'Authorization': TOKEN}};
-        return axios.get(URL,HEADER).then((response)=>{
-            console.log(response);
-            return response.data;
-            
-        }).catch((error)=>{
-            console.log(error);
-            return [];
-        })
+        return axios.get(URL,HEADER);
     }
 
 

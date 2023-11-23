@@ -24,17 +24,17 @@ function MemberTrainers(){
                 UserService.details().then((response)=>{
                     let resp = response;
                     console.log(resp)
-                    setMember(resp);
+                    setMember(resp.data);
                 });
-                UserService.getByMember().then((response)=>{
+                UserService.undermember().then((response)=>{
                     let resp = response;
                     console.log(response);
-                    setMemberTrainers(resp);
+                    setMemberTrainers(resp.data);
                 });
-                UserService.getNotByMember().then((response)=>{
+                UserService.notundermember().then((response)=>{
                     let resp = response;
                     console.log(response);
-                    setNotMemberTrainers(resp);
+                    setNotMemberTrainers(resp.data);
                 });
             
             
@@ -50,7 +50,7 @@ function MemberTrainers(){
 
                     <a href="/member-courses" className='text-white mx-3 text-decoration-none' underline='none'>Courses</a>
                     <a href="/member-equipments" className='text-white mx-3 text-decoration-none' underline='none'>Equipments</a>
-                    <a href="/member-trainers" className='text-primary mx-3 text-decoration-none' underline='none'>Trainers</a>
+                    <a href="/member-trainers" className='text-info mx-3 text-decoration-none' underline='none'>Trainers</a>
                     
                     </Box>
                     <span className='text-light'><FaceIcon/> Welcome {member?member.first_name:"Member"}!</span>

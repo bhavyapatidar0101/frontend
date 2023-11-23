@@ -46,16 +46,17 @@ function Join(){
             "email":email,
             "phone":phone,
             "password":password,
-            "role":"MEMBER"
         }
         console.log(DATA);
         AuthenticationService.register(DATA).then((resp)=>{
-            if(resp === true){
+            if(resp.data === true){
                 setError(<span className='text-success'>User has been registered.</span>);
             }
             else{
-                setError(<span>User has not been registered.</span>);
+                setError("User has not been registered.");
             }
+        }).catch((e)=>{
+            console.log(e);
         });
         
         

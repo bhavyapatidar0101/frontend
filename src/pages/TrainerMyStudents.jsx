@@ -24,13 +24,13 @@ function TrainerMyStudents(){
         }
         else{
             UserService.details().then(response=>{
-                setTrainer(response);
+                setTrainer(response.data);
             });
 
-            UserService.getByTrainer().then((response)=>{
-                    let resp = response;
-                    console.log(response);
-                    setStudents(response);
+            UserService.undertrainer().then((response)=>{
+                    let resp = response.data;
+                    console.log(response.data);
+                    setStudents(response.data);
             });
 
           
@@ -49,7 +49,7 @@ function TrainerMyStudents(){
                     <Typography variant='body' className='text-light h3 mx-3' sx={{letterSpacing:3}}>SPORTSCLUB</Typography>
                     <a href="/trainer-home" className='text-white mx-3 text-decoration-none' underline='none'>Home</a>
                     <a href="/trainer-my-courses" className='text-white mx-3 text-decoration-none' underline='none'>My Courses</a>
-                    <a href="/trainer-my-students" className='text-primary mx-3 text-decoration-none' underline='none'>My Students</a>
+                    <a href="/trainer-my-students" className='text-info mx-3 text-decoration-none' underline='none'>My Students</a>
                     <a href="/trainer-my-equipments" className='text-white mx-3 text-decoration-none' underline='none'>My Equipments</a>
                     
                     </Box>

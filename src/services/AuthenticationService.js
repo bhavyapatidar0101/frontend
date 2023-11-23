@@ -69,22 +69,10 @@ class AuthenticationService{
         localStorage.clear();
     }
 
-    async register(data){
+    register(data){
         const URL = API + "register";
         const HEADER = {'headers': {'Content-Type': 'application/json'}};
-        try{
-        let response = await axios.post(URL,data,HEADER);
-        if (response.status == 200){
-            return true;
-        }
-        else{
-            return false;
-        }
-        }
-        catch{
-            return false;
-        }
-
+        return axios.post(URL,data,HEADER);
     }
 
 
