@@ -5,7 +5,7 @@ import { useState,useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CardActions from '@mui/material/CardActions';
 import CardMedia from '@mui/material/CardMedia';
-import cardimage from './images/trainer-student.jpg';
+import cardimage from './images/i1.jpg';
 import CourseService from '../services/CourseService';
 import AuthenticationService from '../services/AuthenticationService';
 import UserService from '../services/UserService';

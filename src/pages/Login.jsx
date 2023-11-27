@@ -5,6 +5,8 @@ import AuthenticationService from '../services/AuthenticationService';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import ValidationService from '../services/ValidationService';
+import ClearIcon from '@mui/icons-material/Clear';
+import DoneIcon from '@mui/icons-material/Done';
 function Login(){
 
     const [email,setEmail] = useState("");
@@ -16,24 +18,15 @@ function Login(){
     function checkEmail(e){
         setEmail(e);
         if(!ValidationService.validateEmail(email)){
-            setError("Invalid Email");
+            setError(<span className='text-danger'><ClearIcon/> Invalid E-mail</span>);
         }
         else{
-            setError("");
+            setError(<span className='text-success'><DoneIcon/> Valid E-mail</span>);
         }
 
     }
 
-    function checkPassword(p){
-        setPassword(p);
-        if(!(password.length>1)){
-            setError("Password should not be empty");
-            
-        }
-        else{
-            setError("");
-        }
-    }
+ 
 
 
 
@@ -42,10 +35,7 @@ function Login(){
             setError("Invalid Email");
             return;
         }
-        if(!(password.length>1)){
-            setError("Password should not be empty");
-            return;
-        }
+     
         const DATA = {
             "email" : email,
             "password": password
@@ -117,8 +107,8 @@ function Login(){
                         
                         <h3 className='display-5 text-light my-3'>Login</h3>
                         <TextField onChange={(e)=>{checkEmail(e.target.value)}} className='my-3 text-light border-light' size='small' variant='filled' required label="email" type='email' name='email' sx={{input:{color:'white'},label:{color:'white'}}}></TextField>
-                        <TextField onChange={(e)=>{checkPassword(e.target.value)}} className='my-3 text-light' size='small' variant='filled' required label="password" type='password' name='password' sx={{input:{color:'white'},label:{color:'white'}}}></TextField>
-                        <span className='text-danger'>{error}</span>
+                        <TextField onChange={(e)=>{setPassword(e.target.value)}} className='my-3 text-light' size='small' variant='filled' required label="password" type='password' name='password' sx={{input:{color:'white'},label:{color:'white'}}}></TextField>
+                        <span>{error}</span>
                         <Button onClick={login} className='my-3 text-light' variant='standard'>Sign In</Button>
                     </Container>
             </div>

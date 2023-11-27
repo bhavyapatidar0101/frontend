@@ -7,7 +7,7 @@ import AuthenticationService from '../services/AuthenticationService';
 import EquipmentService from '../services/EquipmentService';
 import CardActions from '@mui/material/CardActions';
 import CardMedia from '@mui/material/CardMedia';
-import cardimage from './images/trainer-student.jpg';
+import cardimage from './images/i3.jpg';
 import UserService from '../services/UserService';
 
 import MailOutlineIcon from '@mui/icons-material/MailOutline';

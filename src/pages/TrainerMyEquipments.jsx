@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import AuthenticationService from '../services/AuthenticationService';
 import CardActions from '@mui/material/CardActions';
 import CardMedia from '@mui/material/CardMedia';
-import cardimage from './images/trainer-student.jpg';
+import cardimage from './images/i2.jpg';
 import EquipmentService from '../services/EquipmentService';
 import UserService from '../services/UserService';
 import FaceIcon from '@mui/icons-material/Face';

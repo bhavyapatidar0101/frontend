@@ -8,9 +8,10 @@ import UserService from '../services/UserService';
 import CourseService from '../services/CourseService';
 import CardActions from '@mui/material/CardActions';
 import CardMedia from '@mui/material/CardMedia';
-import cardimage from './images/trainer-student.jpg';
+import cardimage from './images/i1.jpg';
 import FaceIcon from '@mui/icons-material/Face';
-
+import PaymentService from '../services/PaymentService';
+import StripeCheckout from 'react-stripe-checkout';
 function MemberCourses(){
 
     let navigate = useNavigate();
@@ -36,7 +37,19 @@ function MemberCourses(){
 
     },[]);
 
-    
+    let onPurchase = (token,c_id) => {
+        const DATA = {
+            'course_id':c_id,
+            'member_id':member.id,
+            'date':new Date().toISOString().slice(0, 10),
+            'transaction':'xxxxxxxxxxx'
+        }
+        PaymentService.add(DATA).then((r)=>{
+                navigate("/member-courses");
+        }).catch((e)=>{
+            alert(e);
+        });
+    }
 
         return (
             <div className='bg-dark text-light'>
@@ -100,7 +113,11 @@ function MemberCourses(){
                     <Typography className='my-1' variant="body2" color="text.secondary">Price: {c.price}Rs</Typography>
                     </CardContent>
                     <CardActions>
-                    <Button href={'/member-purchase/'+c.id} size="medium">Purchase</Button>
+                    <StripeCheckout
+        token={(token)=>onPurchase(token,c.id)}
+        stripeKey="pk_test_51MkrdQSB8pStGpyCIFVaYZpPCGue0YtRnt0HXXhEQxSpE6vCgvYCNsdi96B8SiieyUiwrra6Ww1bAf7AQgJH7qB600lqOQ4ZXT">
+            <Button>Buy Now</Button>
+        </StripeCheckout>
                     </CardActions>
                 </Card>
                 )}

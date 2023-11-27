@@ -8,7 +8,7 @@ import UserService from '../services/UserService';
 import CourseService from '../services/CourseService';
 import CardActions from '@mui/material/CardActions';
 import CardMedia from '@mui/material/CardMedia';
-import cardimage from './images/trainer-student.jpg';
+import cardimage from './images/i3.jpg';
 import FaceIcon from '@mui/icons-material/Face';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import PhoneIcon from '@mui/icons-material/Phone';
